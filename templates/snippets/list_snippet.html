@@ -2,6 +2,8 @@
 
 {% block content %}
 
-    <h1>Code Snippets</h1>
+{% for snippet in snippets %}
+<div>{{ snippets.title }}</div>
+{% endfor %}
 
 {% endblock %}

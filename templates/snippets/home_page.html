@@ -2,6 +2,9 @@
 
 {% block content %}
 
-    <h1>Code Snippets</h1>
+    <div>
+        <h2>Welcome to Code Snippets!</h2>
+        <p>Please <a href="{% url 'auth_login' %}">login</a> or <a href="{% url 'registration_register' %}">create a new account</a>.</p>
+    </div>
 
 {% endblock %}

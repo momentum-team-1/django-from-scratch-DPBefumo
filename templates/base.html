@@ -7,8 +7,19 @@
     <title>{% block title %}Code Snippet{% endblock %}</title>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
 </head>
-<body>
-    {% block content %}
-    {% endblock %}
+<body class="georgia">
+    <div>
+        <div class="pa2">
+            <h1><a href="{% url 'home_page' %}">Code Snippets</a></h1>
+            {% if user.is_authenticated %}
+            <div>
+                Hello, {{ user.first_name }}!
+                <a href="{% url 'auth_logout' %}">Logout</a>
+            </div>
+            {% endif %}
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>
