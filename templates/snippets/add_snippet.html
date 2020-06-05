@@ -4,4 +4,12 @@
 
 <h2>Add Your Snippet!</h2>
 
+<form action="{% url 'add_snippet' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <button type="submit">Add Snippet</button>
+    </div>
+</form>
+
 {% endblock %}
