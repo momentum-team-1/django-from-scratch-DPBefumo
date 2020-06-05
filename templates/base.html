@@ -11,6 +11,11 @@
     <div>
         <div class="pa2">
             <h1><a href="{% url 'home_page' %}">Code Snippets</a></h1>
+            <h1><a href="{% url 'list_snippet' %}">List Snippets</a></h1>
+            <h1><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">Show Snippets</a></h1>
+            <h1><a href="{% url 'edit_snippet' %}">Edit Snippets</a></h1>
+            <h1><a href="{% url 'add_snippet' snippet_pk=snippet.pk %}">Add Snippets</a></h1>
+            <h1><a href="{% url 'delete_snippet' snippet_pk=snippet.pk %}">Delete Snippets</a></h1>
             {% if user.is_authenticated %}
             <div>
                 Hello, {{ user.first_name }}!

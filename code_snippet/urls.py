@@ -24,7 +24,7 @@ urlpatterns = [
     path('', snippets_views.home_page, name='home_page'),
     path('snippets/', snippets_views.list_snippet, name='list_snippet'),
     path('snippets/add/', snippets_views.add_snippet, name='add_snippet'),    
-    path('snippets/<int:snippet_pk>/', snippets_views.show_snippet, name='show_snippet'),
+    path('snippets/<int:snippet_pk>/', snippets_views.snippet_detail, name='snippet_detail'),
     path('snippets/<int:snippet_pk>/edit/', snippets_views.edit_snippet, name='edit_snippet'),
     path('snippets/<int:snippet_pk>/delete/', snippets_views.delete_snippet, name='delete_snippet'),
 ]

@@ -6,7 +6,7 @@
 
 <ul> <!-- need to fix the loop to show titles-->
 {% for snippet in snippets.all %}
-    <li><a href="{% url 'show_snippet' snippet_pk=snippet.pk %}">{{ snippet.title }}</a></li>
+    <li><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a></li>
 {% endfor %}
 </ul>
 

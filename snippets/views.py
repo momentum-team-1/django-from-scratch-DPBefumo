@@ -14,14 +14,14 @@ def home_page(request):
 
 @login_required
 def list_snippet(request):
-    snippet = request.user.snippets.all()
-    return render(request, "snippets/list_snippet.html", {'snippet': snippet})
+    snippets = request.user.snippets.all()
+    return render(request, "snippets/list_snippet.html", {'snippets': snippets})
 
 
 @login_required
-def show_snippet(request, snippet_pk):
-    snippet = get_object_or_404(request.user.snippets, pk=snippet_pk)
-    return render(request, "snippets/show_snippet.html", {'snippet': snippet})
+def snippet_detail(request, snippet_pk):
+    snippets = get_object_or_404(request.user.snippets, pk=snippet_pk)
+    return render(request, "snippets/snippet_detail.html", {'snippets': snippets})
 
 
 @login_required
@@ -32,7 +32,7 @@ def add_snippet(request):
             snippet = form.save(commit=False)
             snippet.user = request.user
             snippet.save()
-            return redirect(to='show_snippet', snippet_pk=snippet.pk)
+            return redirect(to='snippet_detail', snippet_pk=snippet.pk)
     else:
         form = SnippetForm()
     
@@ -41,26 +41,26 @@ def add_snippet(request):
 
 @login_required
 def edit_snippet(request, snippet_pk):
-    snippet = get_object_or_404(request.user.snippets, pk=snippet_pk)
+    snippets = get_object_or_404(request.user.snippets, pk=snippet_pk)
     
     if request.method == "POST":
-        form = SnippetForm(instance=snippet, data=request.POST)
+        form = SnippetForm(instance=snippets, data=request.POST)
         if form.is_valid():
-            snippet = form.save()
-            return redirect(to='show_snippet', snippet_pk=snippet.pk)
+            snippets = form.save()
+            return redirect(to='snippet_detail', snippet_pk=snippet.pk)
 
     else:
         form = SnippetForm()
     
-    return render(request, "snippets/edit_snippet.html", {'snippet': snippet, 'form': form})
+    return render(request, "snippets/edit_snippet.html", {'snippets': snippets, 'form': form})
 
 
 @login_required
 def delete_snippet(request, snippet_pk):
-    snippet = get_object_or_404(request.user.snippets, pk=snippet_pk)
+    snippets = get_object_or_404(request.user.snippets, pk=snippet_pk)
 
     if request.method == 'POST':
-        snippet.delete()
+        snippets.delete()
         return redirect(to='list_snippets')
 
-    return render(request, "snippets/delete_snippet.html", {'snippet': snippet})
+    return render(request, "snippets/delete_snippet.html", {'snippets': snippets})
