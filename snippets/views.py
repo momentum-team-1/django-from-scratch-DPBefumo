@@ -20,8 +20,8 @@ def list_snippet(request):
 
 @login_required
 def snippet_detail(request, snippet_pk):
-    snippets = get_object_or_404(request.user.snippets, pk=snippet_pk)
-    return render(request, "snippets/snippet_detail.html", {'snippets': snippets})
+    snippet = get_object_or_404(request.user.snippets, pk=snippet_pk)
+    return render(request, "snippets/snippet_detail.html", {'snippet': snippet})
 
 
 @login_required
@@ -41,26 +41,26 @@ def add_snippet(request):
 
 @login_required
 def edit_snippet(request, snippet_pk):
-    snippets = get_object_or_404(request.user.snippets, pk=snippet_pk)
+    snippet = get_object_or_404(request.user.snippets, pk=snippet_pk)
     
     if request.method == "POST":
-        form = SnippetForm(instance=snippets, data=request.POST)
+        form = SnippetForm(instance=snippet, data=request.POST)
         if form.is_valid():
             snippets = form.save()
-            return redirect(to='snippet_detail', snippet_pk=snippet.pk)
+            return redirect(to='snippet_detail', snippet_pk=snippets.pk)
 
     else:
         form = SnippetForm()
     
-    return render(request, "snippets/edit_snippet.html", {'snippets': snippets, 'form': form})
+    return render(request, "snippets/edit_snippet.html", {'snippet': snippet, 'form': form})
 
 
 @login_required
 def delete_snippet(request, snippet_pk):
-    snippets = get_object_or_404(request.user.snippets, pk=snippet_pk)
+    snippet = get_object_or_404(request.user.snippets, pk=snippet_pk)
 
     if request.method == 'POST':
-        snippets.delete()
+        snippet.delete()
         return redirect(to='list_snippets')
 
-    return render(request, "snippets/delete_snippet.html", {'snippets': snippets})
+    return render(request, "snippets/delete_snippet.html", {'snippet': snippet})
