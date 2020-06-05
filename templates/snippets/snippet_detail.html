@@ -4,11 +4,11 @@
 
 <h2>{{ snippet.title }}</h2>
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>{{ snippet.time_stamp }}</p>
+<p>{{ snippet.language }}</p>
+<p>{{ snippet.description }}</p>
+<pre><code>{{ snippet.body }}</code></pre>
+<p>{{ snippet.tags }}</p>
 
 <h1><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">Snippets</a></h1>
 <h1><a href="{% url 'edit_snippet' snippet_pk=snippet.pk %}">Edit Snippets</a></h1>

@@ -12,6 +12,12 @@ def home_page(request):
     return render(request, "snippets/home_page.html")
 
 
+# @login_required
+# def profile_page(request):
+#     user = User.objects.all()
+#     return render(request, "snippets/profile_page/.html", {'user': user})
+
+
 @login_required
 def list_snippet(request):
     snippets = request.user.snippets.all()
@@ -61,6 +67,6 @@ def delete_snippet(request, snippet_pk):
 
     if request.method == 'POST':
         snippet.delete()
-        return redirect(to='list_snippets')
+        return redirect(to='list_snippet')
 
     return render(request, "snippets/delete_snippet.html", {'snippet': snippet})
