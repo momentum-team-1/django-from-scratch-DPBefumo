@@ -14,8 +14,8 @@ def home_page(request):
 
 @login_required
 def list_snippet(request):
-    snippets = request.user.snippets.all()
-    return render(request, "snippets/list_snippet.html", {'snippet': snippets})
+    snippet = request.user.snippets.all()
+    return render(request, "snippets/list_snippet.html", {'snippet': snippet})
 
 
 @login_required
@@ -55,7 +55,12 @@ def edit_snippet(request, snippet_pk):
     return render(request, "snippets/edit_snippet.html", {'snippet': snippet, 'form': form})
 
 
-@login_required #neds to be edited
+@login_required
 def delete_snippet(request, snippet_pk):
     snippet = get_object_or_404(request.user.snippets, pk=snippet_pk)
+
+    if request.method == 'POST':
+        snippet.delete()
+        return redirect(to='list_snippets')
+
     return render(request, "snippets/delete_snippet.html", {'snippet': snippet})
