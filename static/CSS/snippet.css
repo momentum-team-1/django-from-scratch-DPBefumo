@@ -1,0 +1,23 @@
+* {
+    /* outline: 5px solid palevioletred; */
+}
+
+body {
+    margin: 2em;
+}
+
+.header {
+    overflow: hidden;
+    background-color: #0b0c10;
+    padding: 20px 10px;
+}
+
+.header a {
+    float: left;
+    color: #66fcf1;
+    text-align: center;
+}
+
+.header-right {
+    float: right;
+}

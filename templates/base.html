@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,20 @@
     {% block meta %}{% endblock %}
     <title>{% block title %}Code Snippet{% endblock %}</title>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/snippet.css' %}"/>
 </head>
 <body class="georgia">
     <div>
-        <div class="pa2">
-            <h1><a href="{% url 'home_page' %}">Code Snippets</a></h1>
-            <h1><a href="{% url 'list_snippet' %}">List Snippets</a></h1>
-            <h1><a href="{% url 'add_snippet' %}">Add Snippets</a></h1>
+        <div class="pa2 header">
+            <h1>Code Snippets</h1>
+            <div class="header-right">
+                <a class="br-pill" href="{% url 'home_page' %}">Home</a>
+                <a class="br-pill" href="{% url 'add_snippet' %}">Add Snippets</a>
+                <a class="br-pill" href="{% url 'auth_logout' %}">Logout</a>
+            </div>
             {% if user.is_authenticated %}
             <div>
                 Hello, {{ user.first_name }}!
-                <a href="{% url 'auth_logout' %}">Logout</a>
             </div>
             {% endif %}
         </div>

@@ -9,4 +9,5 @@ class SnippetForm(forms.ModelForm):
             'language',
             'description',
             'body',
+            'tags',
         ]
