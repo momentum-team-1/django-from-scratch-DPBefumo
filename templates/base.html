@@ -9,20 +9,21 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
     <link rel="stylesheet" href="{% static 'css/snippet.css' %}"/>
 </head>
-<body class="georgia">
+<body class="avenir tracked">
     <div>
-        <div class="pa2 header">
-            <h1>Code Snippets</h1>
-            <div class="header-right">
-                <a class="br-pill" href="{% url 'home_page' %}">Home</a>
-                <a class="br-pill" href="{% url 'add_snippet' %}">Add Snippets</a>
-                <a class="br-pill" href="{% url 'auth_logout' %}">Logout</a>
-            </div>
+        <div class="header tc avenir">
+            <h1 class="f-headline mt0 mb0 fw6">Code Snippets</h1>
             {% if user.is_authenticated %}
-            <div>
+            <h2 class="mt4 mb1 f5 fw4 ttu tracked">
                 Hello, {{ user.first_name }}!
-            </div>
+            </h2>
             {% endif %}
+            <div class="tc mw7 center mt4">
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'home_page' %}">Home</a>
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'profile_page' %}">Profile Page</a>
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'add_snippet' %}">Add Snippets</a>
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'auth_logout' %}">Logout</a>
+            </div>
         </div>
         {% block content %}
         {% endblock %}

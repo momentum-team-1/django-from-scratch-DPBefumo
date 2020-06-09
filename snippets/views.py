@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Snippet
+from .models import Snippet, Tag
 from users.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import SnippetForm
@@ -12,10 +12,9 @@ def home_page(request):
     return render(request, "snippets/home_page.html")
 
 
-# @login_required
-# def profile_page(request):
-#     user = User.objects.all()
-#     return render(request, "snippets/profile_page/.html", {'user': user})
+@login_required
+def profile_page(request):
+    return render(request, "snippets/profile_page.html")
 
 
 @login_required
@@ -52,13 +51,13 @@ def edit_snippet(request, snippet_pk):
     if request.method == "POST":
         form = SnippetForm(instance=snippet, data=request.POST)
         if form.is_valid():
-            snippets = form.save()
-            return redirect(to='snippet_detail', snippet_pk=snippets.pk)
+            snippet = form.save()
+            return redirect(to='snippet_detail', snippet_pk=snippet.pk)
 
     else:
-        form = SnippetForm()
+        form = SnippetForm(instance=snippet)
     
-    return render(request, "snippets/edit_snippet.html", {'snippet': snippet, 'form': form})
+    return render(request, "snippets/edit_snippet.html", {'form': form, 'snippet': snippet})
 
 
 @login_required

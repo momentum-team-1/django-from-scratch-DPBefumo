@@ -1,23 +1,21 @@
 * {
     /* outline: 5px solid palevioletred; */
+    color: #66fcf1;
 }
 
 body {
     margin: 2em;
+    background-color: #1f2833;
 }
-
+ 
 .header {
-    overflow: hidden;
     background-color: #0b0c10;
-    padding: 20px 10px;
+    margin-left: -2em;
+    margin-right: -2em;
+    margin-top: -2em;
+    border-bottom: 5px solid #49a29e;
 }
 
 .header a {
-    float: left;
-    color: #66fcf1;
-    text-align: center;
-}
-
-.header-right {
-    float: right;
+    font-size: 18px;
 }
