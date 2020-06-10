@@ -7,7 +7,7 @@ body {
     margin: 2em;
     background-color: #1f2833;
 }
- 
+
 .header {
     background-color: #0b0c10;
     margin-left: -2em;
@@ -18,4 +18,19 @@ body {
 
 .header a {
     font-size: 18px;
+}
+
+.footer {
+    background-color: #0b0c10;
+    margin-left: -2em;
+    margin-right: -2em;
+    /* margin-bottom: -2em; */
+    border-top: 5px solid #49a29e;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.foot-image {
+    width: 4em;
 }
