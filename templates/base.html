@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
     <link rel="stylesheet" href="{% static 'css/snippet.css' %}"/>
 </head>
-<body class="avenir tracked">
-    <div>
+<body class="page-container avenir tracked">
+    <div class="content-wrapper">
         <div class="header tc avenir">
             <h1 class="main-title f-headline mt0 mb0 fw6">Code Snippets</h1>
             {% if user.is_authenticated %}
@@ -25,8 +25,10 @@
                 <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'auth_logout' %}">Logout</a>
             </div>
         </div>
-        {% block content %}
-        {% endblock %}
+        <div class="template-margin tc">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
     <div class="footer tc pv4 ph3 ph5-m ph6-l">
         <small class="f6 db tc">© 2020 <b class="ttu">SOME COMPANY Inc</b>., All Rights Reserved</small>

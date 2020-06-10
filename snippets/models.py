@@ -1,6 +1,14 @@
 from django.db import models
 from users.models import User
 
+LANGUAGE_CHOICES = (
+    ('HTML', 'HTML'),
+    ('CSS', 'CSS'),
+    ('JavaScript', 'JavaScript'),
+    ('Python', 'Python'),
+    ('Django', 'Django')
+)
+
 class Tag(models.Model):
     tag = models.CharField(max_length=150, unique=True)
 
@@ -14,8 +22,8 @@ class Snippet(models.Model):
                             null=True)
     title = models.CharField(max_length=255)
     time_stamp = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    language = models.CharField(max_length=100)
     description = models.CharField(max_length=255, null=True, blank=True)
+    language = models.CharField(max_length=10, choices=LANGUAGE_CHOICES, default='')
     body = models.TextField(max_length=1000)
     tags = models.ManyToManyField(to=Tag, related_name="snippets")
 

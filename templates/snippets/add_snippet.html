@@ -6,7 +6,12 @@
 
 <form action="{% url 'add_snippet' %}" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for field in form %}
+    <div class="form-field mb3">
+        <label class="db f4 mb3" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+    </div>
+    {% endfor %}
     <div>
         <button class="bg-gray f5 link dim br3 ph3 pv2 mb2 dib fw5" type="submit">Add Snippet</button>
     </div>
