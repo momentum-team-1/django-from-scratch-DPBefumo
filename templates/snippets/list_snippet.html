@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h2>Your Snippets!</h2>
+<h2 class="tc">Your Snippets!</h2>
 
-<ul> <!-- need to fix the loop to show titles-->
+<ul class="tc"> 
 {% for snippet in snippets.all %}
-    <li><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a></li>
+    <li class="pa2"><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a></li>
 {% endfor %}
 </ul>
 

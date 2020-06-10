@@ -16,8 +16,8 @@ class SnippetForm(forms.ModelForm):
             'tags',
         ]
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'pa2 f4 w-80 bg-silver'}),
-            'language': forms.TextInput(attrs={'class': 'pa2 f4 w-80 bg-silver'}),
-            'description': forms.TextInput(attrs={'class': 'pa2 f4 w-80 bg-silver'}),
-            # 'body': forms.TextInput(attrs={'class': 'pa2 f4 h4 w-80 bg-silver'}),
+            'title': forms.TextInput(attrs={'class': 'pa2 f4 w-100 bg-silver'}),
+            'language': forms.TextInput(attrs={'class': 'pa2 f4 w-100 bg-silver'}),
+            'description': forms.TextInput(attrs={'class': 'pa2 f4 w-100 bg-silver'}),
+            'body': forms.Textarea(attrs={'class': 'pa2 f4 h4 w-100 bg-silver'}),
         } 
