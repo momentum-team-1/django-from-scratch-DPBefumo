@@ -2,12 +2,10 @@
 
 {% block content %}
 
-<h2 class="tc">Your Snippets!</h2>
+<h1 class="tc">Your Snippets</h1>
 
-<ul class="tc"> 
 {% for snippet in snippets.all %}
-    <li class="pa2"><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a></li>
-{% endfor %}
-</ul>
+<h4 class="tc pa2"><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a></h4>{% endfor %}
+
 
 {% endblock %}

@@ -4,8 +4,13 @@
 }
 
 body {
-    margin: 2em;
     background-color: #1f2833;
+    margin-top: 2em;
+    margin-bottom: -1em
+}
+
+.main-title {
+    padding-top: .5em;
 }
 
 .header {
@@ -13,6 +18,7 @@ body {
     margin-left: -2em;
     margin-right: -2em;
     margin-top: -2em;
+    margin-bottom: 2em;
     border-bottom: 5px solid #49a29e;
 }
 
@@ -25,7 +31,7 @@ body {
     margin-left: -2em;
     margin-right: -2em;
     margin-bottom: -2em;
-    margin-top: 7em;
+    margin-top: 5em;
     border-top: 5px solid #49a29e;
 }
 

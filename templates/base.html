@@ -12,7 +12,7 @@
 <body class="avenir tracked">
     <div>
         <div class="header tc avenir">
-            <h1 class="f-headline mt0 mb0 fw6">Code Snippets</h1>
+            <h1 class="main-title f-headline mt0 mb0 fw6">Code Snippets</h1>
             {% if user.is_authenticated %}
             <h2 class="mt4 mb1 f5 fw4 ttu tracked">
                 Hello, {{ user.first_name }}!
@@ -28,7 +28,7 @@
         {% block content %}
         {% endblock %}
     </div>
-    <div class="footer tc pv4 ph5-m ph6-l">
+    <div class="footer tc pv4 ph3 ph5-m ph6-l">
         <small class="f6 db tc">© 2020 <b class="ttu">SOME COMPANY Inc</b>., All Rights Reserved</small>
         <div class="tc mt3">
             <img class="foot-image pt2 pb2" src="/static/css/resources/dpb_logo.png"/>

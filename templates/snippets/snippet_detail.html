@@ -10,9 +10,8 @@
 <pre><code>{{ snippet.body }}</code></pre>
 <p>{{ snippet.tags }}</p>
 
-<h1><a href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">Snippets</a></h1>
-<h1><a href="{% url 'edit_snippet' snippet_pk=snippet.pk %}">Edit Snippets</a></h1>
-<h1><a href="{% url 'delete_snippet' snippet_pk=snippet.pk %}">Delete Snippets</a></h1>
+<button class="bg-gray f5 link dim br3 ph3 pv2 mb2 dib fw5" href="{% url 'edit_snippet' snippet_pk=snippet.pk %}">Edit Snippets<button1>
+<button class="bg-gray f5 link dim br3 ph3 pv2 mb2 dib fw5" href="{% url 'delete_snippet' snippet_pk=snippet.pk %}">Delete Snippets</button>
 
 
-{% endblock %}
+{% endblock %} 
