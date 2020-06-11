@@ -37,6 +37,7 @@ def add_snippet(request):
             snippet = form.save(commit=False)
             snippet.user = request.user
             snippet.save()
+            snippet.set_tag_names(form.cleaned_data['tag_names'])
             return redirect(to='snippet_detail', snippet_pk=snippet.pk)
     else:
         form = SnippetForm()
@@ -52,10 +53,11 @@ def edit_snippet(request, snippet_pk):
         form = SnippetForm(instance=snippet, data=request.POST)
         if form.is_valid():
             snippet = form.save()
+            snippet.set_tag_names(form.cleaned_data['tag_names'])
             return redirect(to='snippet_detail', snippet_pk=snippet.pk)
 
     else:
-        form = SnippetForm(instance=snippet)
+        form = SnippetForm(instance=snippet, initial={"tag_names": snippet.tag_names()})
     
     return render(request, "snippets/edit_snippet.html", {'form': form, 'snippet': snippet})
 
@@ -73,4 +75,6 @@ def delete_snippet(request, snippet_pk):
 
 @login_required
 def show_tag(request, tag_name):
-    pass
+    tag = get_object_or_404(Tag, tag=tag_name)
+    snippets = tag.snippets.filter(user=request.user)
+    return render(request, "snippets/tag_detail.html", {"tag": tag, 'snippets': snippets})

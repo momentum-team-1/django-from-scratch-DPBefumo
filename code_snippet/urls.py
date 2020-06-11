@@ -27,7 +27,8 @@ urlpatterns = [
     path('snippets/<int:snippet_pk>/', snippets_views.snippet_detail, name='snippet_detail'),
     path('snippets/<int:snippet_pk>/edit/', snippets_views.edit_snippet, name='edit_snippet'),
     path('snippets/<int:snippet_pk>/delete/', snippets_views.delete_snippet, name='delete_snippet'),
-    path('accounts/profile/', snippets_views.profile_page, name='profile_page')
+    path('accounts/profile/', snippets_views.profile_page, name='profile_page'),
+    path('tags/<str:tag_name>/', snippets_views.show_tag, name='show_tag'),
 ]
 
 if settings.DEBUG:

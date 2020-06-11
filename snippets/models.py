@@ -27,14 +27,22 @@ class Snippet(models.Model):
     body = models.TextField(max_length=1000)
     tags = models.ManyToManyField(to=Tag, related_name="snippets")
 
-    # def get_tag_names(self):
-    #     tag_names = []
-    #     for tag in self.tags.all():
-    #         tag_names.append.(tag.tag)
+    def tag_names(self):
+        tag_names = []
+        for tag in self.tags.all():
+            tag_names.append(tag.tag)
 
-    #     return " ".join(tag_names)
+        return " ".join(tag_names)
 
-
+    def set_tag_names(self, tag_names):
+        tag_names = tag_names.split()
+        tags = []
+        for tag_name in tag_names:
+            tag = Tag.objects.create(tag=tag_name).first()
+            if tag is None:
+                tag = Tag.objects.create(tag=tag_name)
+            tags.append(tag)
+        self.tags.set(tags)
 
     def __str__(self):
         return self.title
