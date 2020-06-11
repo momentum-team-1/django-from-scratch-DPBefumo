@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from django.db.models import Q
 
 LANGUAGE_CHOICES = (
     ('HTML', 'HTML'),
@@ -8,6 +9,13 @@ LANGUAGE_CHOICES = (
     ('Python', 'Python'),
     ('Django', 'Django')
 )
+
+PUBLIC = 'PUB'
+PRIVATE = 'PRI'
+VISIBILITY_CHOICES =[
+    (PUBLIC, 'Public'),
+    (PRIVATE, 'Private'),
+]
 
 class Tag(models.Model):
     tag = models.CharField(max_length=150, unique=True)
@@ -26,6 +34,7 @@ class Snippet(models.Model):
     language = models.CharField(max_length=10, choices=LANGUAGE_CHOICES, default='')
     body = models.TextField(max_length=1000)
     tags = models.ManyToManyField(to=Tag, related_name="snippets")
+    visibility = models.CharField(max_length=100, choices=VISIBILITY_CHOICES, default=PRIVATE)
 
     def tag_names(self):
         tag_names = []
@@ -46,3 +55,6 @@ class Snippet(models.Model):
 
     def __str__(self):
         return self.title
+
+def search_snippets_for_user(user, query):
+    return user.snippets.filter(Q(title__icontains=query) | Q(tags__tag__icontains=query)).distinct()

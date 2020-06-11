@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Search</h2>
+
+<form action="{% url 'search_snippets' %}" method="GET">
+    <input type="search" name="q" placeholder="Search Snippets" class="pa2 w-80 bg-silver">
+    <div>
+        <button class="bg-gray f5 link dim br3 ph3 mt3 pv2 mb2 dib fw5" type="submit">Search</button>
+    </div>
+</form>
+
+<div class="mt4 cf flex flex-wrap justify-center">
+{% if snippets is not None %}
+    {%for snippet in snippets %}
+        <a class="pa2 mr2 f6 link w-40 dim br3 ba ph3 pv2 mb2" href={% url 'snippet_detail' snippet_pk=snippet.pk %}>{{ snippet.title }}</a>
+    {% empty %}
+        <p>There are no search results.</p>
+    {% endfor %}
+{% endif %}
+</div>
+
+{% endblock %}

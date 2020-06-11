@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Snippet, Tag
+from .models import Snippet, Tag, search_snippets_for_user
 from users.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import SnippetForm
+
 
 
 def home_page(request):
@@ -10,6 +11,9 @@ def home_page(request):
         return redirect(to='list_snippet')
 
     return render(request, "snippets/home_page.html")
+
+def login(request):
+    return render(request, "snippets/login.html")
 
 
 @login_required
@@ -78,3 +82,15 @@ def show_tag(request, tag_name):
     tag = get_object_or_404(Tag, tag=tag_name)
     snippets = tag.snippets.filter(user=request.user)
     return render(request, "snippets/tag_detail.html", {"tag": tag, 'snippets': snippets})
+
+
+@login_required
+def search_snippets(request):
+    query = request.GET.get('q')
+
+    if query is not None:
+        snippets = search_snippets_for_user(request.user, query)
+    else:
+        snippets = None
+    
+    return render(request, "snippets/search.html", {"snippets":snippets, "query":query})
