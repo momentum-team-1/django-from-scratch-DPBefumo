@@ -5,7 +5,7 @@ class SnippetForm(forms.ModelForm):
     
     
     class Meta:
-        # tags = 
+        # tags_names =  
         
         model = Snippet
         fields = [

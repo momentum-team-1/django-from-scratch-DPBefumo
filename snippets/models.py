@@ -27,6 +27,14 @@ class Snippet(models.Model):
     body = models.TextField(max_length=1000)
     tags = models.ManyToManyField(to=Tag, related_name="snippets")
 
+    # def get_tag_names(self):
+    #     tag_names = []
+    #     for tag in self.tags.all():
+    #         tag_names.append.(tag.tag)
+
+    #     return " ".join(tag_names)
+
+
 
     def __str__(self):
         return self.title

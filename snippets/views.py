@@ -69,3 +69,8 @@ def delete_snippet(request, snippet_pk):
         return redirect(to='list_snippet')
 
     return render(request, "snippets/delete_snippet.html", {'snippet': snippet})
+
+
+@login_required
+def show_tag(request, tag_name):
+    pass
