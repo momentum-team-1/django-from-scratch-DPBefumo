@@ -61,7 +61,7 @@ def edit_snippet(request, snippet_pk):
             return redirect(to='snippet_detail', snippet_pk=snippet.pk)
 
     else:
-        form = SnippetForm(instance=snippet, initial={"tag_names": snippet.tag_names()})
+        form = SnippetForm(instance=snippet, initial={"tag_names": snippet.get_tag_names()})
     
     return render(request, "snippets/edit_snippet.html", {'form': form, 'snippet': snippet})
 

@@ -36,7 +36,7 @@ class Snippet(models.Model):
     tags = models.ManyToManyField(to=Tag, related_name="snippets")
     visibility = models.CharField(max_length=100, choices=VISIBILITY_CHOICES, default=PRIVATE)
 
-    def tag_names(self):
+    def get_tag_names(self):
         tag_names = []
         for tag in self.tags.all():
             tag_names.append(tag.tag)
@@ -47,7 +47,7 @@ class Snippet(models.Model):
         tag_names = tag_names.split()
         tags = []
         for tag_name in tag_names:
-            tag = Tag.objects.create(tag=tag_name).first()
+            tag = Tag.objects.filter(tag=tag_name).first()
             if tag is None:
                 tag = Tag.objects.create(tag=tag_name)
             tags.append(tag)
