@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h2>Cya Snippet!</h2>
+<h1 class="underline">Cya Snippet!</h1>
 
 <div>
     <form action="{% url 'delete_snippet' snippet_pk=snippet.pk %}" method="POST">
         {% csrf_token %}
-        <p>Do you want to delete {{ snippet.title }}</p>
+        <p>Are you sure you want to delete {{ snippet.title }}?</p>
         <div>
             <button type="submit" class="bg-gray f5 link dim br3 ph3 pv2 mb2 dib fw5">Delete</button>
             <a class=" f5 link dim br3 ba bw2 ph3 pv2 mb2 dib fw6 dark-red" href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">Cancel</a>

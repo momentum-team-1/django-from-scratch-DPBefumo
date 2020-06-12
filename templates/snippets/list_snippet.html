@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="tc">Your Snippets</h1>
+<h1 class="tc underline">Your Snippets</h1>
 <div class="cf flex flex-wrap justify-center"> 
 {% for snippet in snippets.all %}
     <a class="pa2 mr2 f6 link w-40 dim br3 ba ph3 pv2 mb2" href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a>

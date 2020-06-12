@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>Edit Snippet</h2>
+<h1 class="underline">Edit Snippet</h1>
 
 <form action="{% url 'edit_snippet' snippet_pk=snippet.pk %}" method="POST">
     {% csrf_token %}
