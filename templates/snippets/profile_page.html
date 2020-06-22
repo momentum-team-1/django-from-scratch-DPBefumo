@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="pb1 underline">{{ user.first_name }}'s Page</h1>
+
+<h3>Public Snippets</h3>
+    <div class="cf flex flex-wrap justify-center">
+        {% for snippet in snippets %}
+            {% if snippet.visibility == 'PUB' %}
+                <a class="pa2 mr2 f6 link w-40 dim br3 ba ph3 pv2 mb2" href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+<h3>Private Snippets</h3>
+    <div class="cf flex flex-wrap justify-center">
+        {% for snippet in snippets %}
+            {% if snippet.visibility == 'PRI' %}
+                <a class="pa2 mr2 f6 link w-40 dim br3 ba ph3 pv2 mb2" href="{% url 'snippet_detail' snippet_pk=snippet.pk %}">{{ snippet.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

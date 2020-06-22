@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width={%}, initial-scale=1.0">
+    {% block meta %}{% endblock %}
+    <title>{% block title %}Code Snippet{% endblock %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/snippet.css' %}"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/atom-one-dark.min.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="page-container avenir tracked">
+    <div class="content-wrapper">
+        <div class="header tc avenir">
+            <h1 class="main-title f-headline mt0 pb0 fw6">Code Snippets</h1>
+            {% if user.is_authenticated %}
+            <h2 class="mb1 f5 fw4 ttu tracked">
+                Hello, {{ user.first_name }}!
+            </h2>
+            <div class="tc mw7 center mt4">
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'home_page' %}">Home</a>
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'profile_page' %}">Profile</a>
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'add_snippet' %}">Add Snippets</a>
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'search_snippets' %}">Search</a>
+                <a class="f6 f5-l link bg-animate hover-bg-light-blue dib pa3 ph4-l" href="{% url 'auth_logout' %}">Logout</a>
+            {% endif %}
+            </div>
+        </div>
+        <div class="template-margin tc">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="footer tc pv4 ph3 ph5-m ph6-l">
+        <small class="f6 db tc">© 2020 <b class="ttu">FUMO'S FUNHOUSE Inc</b>., All Rights Reserved</small>
+        <div class="tc mt3">
+            <img class="foot-image pt2 pb2" src="/static/css/resources/dpb_logo.png"/>
+        </div>
+    </div>
+</body>
+</html>

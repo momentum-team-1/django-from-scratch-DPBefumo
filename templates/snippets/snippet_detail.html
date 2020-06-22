@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="underline">{{ snippet.title }}</h1>
+
+<p>{{ snippet.time_stamp }}</p>
+<p>{{ snippet.language }}</p>
+<p>{{ snippet.description }}</p>
+<pre class="tl"><code class="{{ snippet.language }}">{{ snippet.body }}</code></pre>
+<p>Tags</p>
+<div class="flex justify-center pb3">
+    {% for tag in snippet.tags.all %}
+        <a class="f6 link w-20 dim br3 ba ph3 pv2 mr2" href="{% url 'show_tag' tag_name=tag.tag %}">{{ tag }}</a>
+    {% endfor %}
+</div>
+
+<a class="bg-gray f5 link dim br3 ph3 pv2 mb2 dib fw5" href="{% url 'edit_snippet' snippet_pk=snippet.pk %}">Edit Snippet</a>
+<a class="bg-gray f5 link dim br3 ph3 pv2 mb2 dib fw5" href="{% url 'delete_snippet' snippet_pk=snippet.pk %}">Delete Snippet</a>
+
+
+{% endblock %} 
